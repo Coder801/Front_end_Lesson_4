@@ -7,17 +7,17 @@
 // Длинна номера не должна быть не меньше 9 и не больше 11
 
 // * Your code Start *
-/*var userPhone = prompt("Please add your phone number", '');//Не работает
-	if (userPhone >= 9 && userPhone <= 11) {
-	alert ("Your phone number is accepted");
-	} else if (userPhone < 9) {
-	alert ("Your phone number is too small");
-	} else if (userPhone > 11) {
-	alert ("Your phone number is too big");
-	} else {
-	alert ("Enter a phone number");
-	}
-*/
+var userPhone = prompt("Please add your phone number", '');//Не работает
+if (userPhone.length >= 9 && userPhone.length <= 11) { // * тебе нужно узнать длинну строки. Для этого есть свойство length. userPhone.length == кол-во символов в строке
+   alert ("Your phone number is accepted");
+} else if (userPhone.length < 9) {
+   alert ("Your phone number is too small");
+} else if (userPhone.length > 11) {
+   alert ("Your phone number is too big");
+} else {
+   alert ("Enter a phone number");
+}
+  
 /*var value = prompt("Please add your phone number", ''); // Как использовать знаки равенства в конструкции switch/case
 var number = +value;
 	switch (number) {
@@ -43,17 +43,33 @@ var number = +value;
 	alert ("Enter a phone number");
 }*/
 
+// Конструкция выше неправильная. case принимает 1 параметр, а не пачку.
+// Такая проверка в целом неправильная, например если пользователь ввел 20 символов, мы же не будем писать case n 20 раз
+// если хочешь через switch
 
+switch(true) { // услови всегда выполнится
+  case userPhone.length >= 9 && userPhone.length <= 11: // проверки уже в case
+    alert ("Your phone number is accepted");
+    break;
+  case userPhone.length < 9:
+	   alert ("Your phone number is too small");
+     break;
+  case userPhone.length > 11:
+	   alert ("Your phone number is too large");
+     break;
+  default: 
+    alert ("Enter a phone number");
+    break;
+}
 
-
-// * Your code End *
+// * Your code End */
 
 
 // ## 1 Клонирование обьектов
 //
 // Склонируйте обьект objectA в objectB при помощи цикла
 
-/*var objectA = {
+var objectA = {
   name: 'John',
   lastname: 'Dou',
   age: 50
@@ -64,10 +80,9 @@ var objectB = {};
 for (var key in objectA) {
 	objectB[key] = objectA[key];
 }
-*/
 
-// * Your code End *
-/*
+// * Your code End */
+
 // Переопределяем значения обьекта objectA
 objectA.name = 'Chris';
 objectA.name = 'Couer';
@@ -91,11 +106,11 @@ var month = date.getMonth(); // Текущий месяц (от 0 до 11)
 var year = date.getFullYear(); // Текущий год
 var monthName = ''; // Переменная для значения
 
-// * Your code Start *
+// * Your code Start */
 
 
 
-// * Your code End *
+// * Your code End */
 
 console.log(`Today is: ${day} ${monthName} ${year}`) // Пример: 14 Июня 2017
 
@@ -134,20 +149,20 @@ var users = [{
     }
 }*/
 
-/*var userName = prompt("Enter your name");//Почему не работает?
-    for (var i = 0; i < users.length; i++) {
-    	for(var n = 0; n < users.length; n++) {
-        	if (userName == users[i][n]) {
-        		alert ("dd");
-        		var userPassword = prompt("Enter your password");
-        	if (userPassword == users[i][n]) {
-        		alert ('Your password is right');
-				} else {
-				alert ('Your password is false');
-			}
-		}
+var userName = prompt("Enter your name", '');//Почему не работает?
+
+for (var i = 0; i < users.length; i++) {
+  if (userName == users[i].name) {
+    var userPassword = prompt("Enter your password");
+    if (userPassword == users[i].password) {
+      alert ('Your password is right');
+  } else {
+      alert ('Your password is false');
     }
-}*/
+  }
+}
+
+// Лишний внутренний цикл. Мы можем не перебирать ключи обьекта а обратиться непосредственно к ключу
 
 
 // * Your code End *
